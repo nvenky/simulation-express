@@ -1,0 +1,81 @@
+{
+  "name": "simulation-express-mongoose",
+  "description": "A boilerplate application for express mongoose",
+  "version": "1.0.0",
+  "private": true,
+  "author": {
+    "name": "Venkatesh Nannan",
+    "email": "something@abc.com"
+  },
+  "engines": {
+    "node": "0.10.x"
+  },
+  "scripts": {
+    "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon server.js",
+    "test": "make test"
+  },
+  "dependencies": {
+    "async": "latest",
+    "body-parser": "^1.8.2",
+    "coffee-script": "^1.8.0",
+    "compression": "^1.1.0",
+    "connect-flash": "^0.1.1",
+    "connect-mongo": "^0.4.1",
+    "cookie-parser": "^1.3.3",
+    "cookie-session": "^1.0.2",
+    "csurf": "^1.6.1",
+    "express": "^4.9.3",
+    "express-session": "^1.8.2",
+    "forever": "^0.11.1",
+    "method-override": "^2.2.0",
+    "mongoose": "^3.9.2",
+    "mongoose-user": "0.0.1",
+    "morgan": "^1.3.1",
+    "passport": "^0.2.1",
+    "passport-local": "^1.0.0",
+    "swig": "^1.4.2",
+    "view-helpers": "^0.1.5",
+    "winston": "^0.8.0"
+  },
+  "devDependencies": {
+    "angular": "^1.3.0",
+    "angular-resource": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "angular-ui-router": "^0.2.11",
+    "bootstrap-webpack": "0.0.3",
+    "chai": "*",
+    "coffee-loader": "~0",
+    "css-loader": "~0.6.3",
+    "exports-loader": "^0.6.2",
+    "file-loader": "^0.8.1",
+    "font-awesome": "^4.2.0",
+    "grunt": "~0.4.1",
+    "grunt-contrib-clean": "^0.6.0",
+    "grunt-contrib-copy": "^0.7.0",
+    "grunt-contrib-jshint": "~0.8.0",
+    "grunt-conventional-changelog": "~1.1.0",
+    "grunt-release": "~0.6.0",
+    "grunt-webpack": "^1.0.8",
+    "jquery": "^2.1.1",
+    "load-grunt-tasks": "~0.3.0",
+    "lodash": "^2.4.1",
+    "mocha": "latest",
+    "ng-cache-loader": "0.0.4",
+    "nodemon": "latest",
+    "sass-loader": "^0.2.0",
+    "semver": "~2.3.0",
+    "should": "latest",
+    "style-loader": "~0.6.0",
+    "supertest": "latest",
+    "url-loader": "^0.5.5",
+    "webpack": "~1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/nvenky/simulation-express.git"
+  },
+  "keywords": [
+    "mvc",
+    "boilerplate"
+  ]
+}

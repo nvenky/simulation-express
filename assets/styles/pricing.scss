@@ -1,0 +1,140 @@
+.pricing{
+  margin:20px 0;
+  -moz-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  -webkit-box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  box-shadow: 0 2px 5px 0 rgba(0,0,0,.2);
+  background: #fff;
+  max-width: 330px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.pricing.tiny {
+  border:1px solid #14937a;
+  border-bottom:10px solid #14937a;
+}
+
+.pricing.small {
+  border:1px solid #cd8109;
+  border-bottom:10px solid #cd8109;
+}
+
+.pricing.medium {
+  border:1px solid #a12f23;
+  border-bottom:10px solid #a12f23;
+}
+
+.pricing.pro {
+  border:1px solid #1d6391;
+  border-bottom:10px solid #1d6391;
+}
+
+.pricing-table strong { 
+  font-weight: 700; 
+  color: #3d3d3d; 
+}
+
+.pricing-table-header{
+  padding: 5px 0 5px 0;
+}
+
+.pricing-table-header h2{  
+  font-weight: 700; 
+  margin: 10px 0;
+}
+
+.pricing-table-header h3{ 
+  font-weight: 500;
+  margin: 10px 0;
+}
+
+.tiny .pricing-table-header{
+  border-bottom:10px solid #14937a;
+}
+
+.small .pricing-table-header{
+  border-bottom:10px solid #cd8109;
+}
+
+.medium .pricing-table-header{
+  border-bottom:10px solid #a12f23;
+}
+
+.pro .pricing-table-header{
+  border-bottom:10px solid #1d6391;
+}
+
+.pricing-table-text {
+  margin: 15px 30px 0 30px;
+  padding: 0 10px 15px 10px;
+  border-bottom: 1px solid #ddd;
+  text-align: left;
+  line-height: 30px;
+  font-size: 16px;
+  color: #888;
+}
+
+.pricing-table-features {
+  margin: 15px 10px 0 10px;
+  padding: 0 10px 15px 10px;
+  border-bottom: 1px dashed #888;
+  text-align: center;
+  line-height: 20px;
+  font-size: 14px;
+  background: #fff;
+  color: #888;
+}
+
+.pricing-table-features p {
+   margin: 0px
+}
+.pricing-table-signup{
+  margin-top: 25px;
+  padding-bottom: 10px;
+}
+
+.pricing-table-signup a {
+  display: inline-block;
+  width:50%;
+  height: 50px;
+  line-height: 50px;
+  text-decoration: none;
+  text-transform: uppercase;
+  color: #fff;
+}
+.pricing-table-signup a:hover, .pricing-table-signup a:active{
+  text-decoration: none;
+  color: #fff;
+}
+
+.tiny .pricing-table-signup a, .tiny .pricing-table-header{
+  background: #16a085;
+}
+
+.tiny .pricing-table-signup a:hover, .tiny .pricing-table-signup a:active {
+  background: #14937a;
+}
+
+.small .pricing-table-signup a, .small .pricing-table-header {
+  background: #f39c12;
+}
+
+.small .pricing-table-signup a:hover, .medium .pricing-table-signup a:active{
+  background-color:#cd8109;
+}
+
+.medium .pricing-table-signup a, .medium .pricing-table-header {
+  background: #c0392b;
+}
+
+.medium .pricing-table-signup a:hover, .medium .pricing-table-signup a:active{
+  background-color:#a12f23;
+}
+
+.pro .pricing-table-signup a, .pro .pricing-table-header {
+  background: #2980b9;
+}
+
+.pro .pricing-table-signup a:hover, .pro .pricing-table-signup a:hover{
+  background-color:#1d6391;
+}

@@ -1,0 +1,11 @@
+.ng-dirty.ng-valid{
+  border-color: green;
+}
+
+.ng-dirty.ng-invalid, .submitted.ng-invalid{
+  border-color: red;
+}
+
+.light {
+    font-weight: 400;
+}

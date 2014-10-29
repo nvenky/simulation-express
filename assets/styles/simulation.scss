@@ -1,0 +1,51 @@
+#page-wrapper{
+ margin: 30px 20px;
+}
+
+.scenario-body{
+  background-color: #f8f8f8;
+}
+
+.scenario-body.back{
+  background-color: #c8e4f6;
+}
+
+.scenario-body.lay{
+  background-color: #fad5dd;
+}
+
+.scenario-body.lay_sp{
+  background-color: #fff;
+}
+
+#spinner {
+  display: block;     
+  z-index: 110;
+  width: 100px;
+  @media (max-width: 600px) {
+    width: 64px;
+  }
+}
+
+#loadingOverlay {
+  top: 0;
+  left: 0;
+  position: fixed;
+  height: 100%;
+  width: 100%;
+  z-index: 100;
+  display: block;
+  background: rgba(0, 0, 0, 0.2);
+}
+
+.centered {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  margin-top: -50px;
+  margin-left: -100px;
+  @media (max-width: 600px) {
+    margin-top: -25px;
+    margin-left: -50px;
+  }
+}

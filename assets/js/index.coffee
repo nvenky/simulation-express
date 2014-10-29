@@ -1,0 +1,8 @@
+$ = require('jquery')
+require('bootstrap-webpack')
+require("./../../node_modules/font-awesome/css/font-awesome.css")
+require("./../../node_modules/font-awesome/fonts/fontawesome-webfont.eot")
+require("./../../node_modules/font-awesome/fonts/fontawesome-webfont.svg")
+require("./../../node_modules/font-awesome/fonts/fontawesome-webfont.ttf")
+require("./../../node_modules/font-awesome/fonts/fontawesome-webfont.woff")
+require('./app.coffee')

@@ -1,0 +1,45 @@
+.navbar-custom {
+	margin-bottom: 0;
+	border-bottom: 1px solid rgba(255,255,255,.3);
+	text-transform: uppercase;
+	font-family: Montserrat,"Helvetica Neue",Helvetica,Arial,sans-serif;
+	background-color: #323B44;
+	color: #727272;
+
+	.navbar-brand {
+		font-weight: 700;
+
+		&:focus {
+			outline: 0;
+		}
+		
+		.navbar-toggle {
+			padding: 4px 6px;
+			font-size: 16px;
+			color: #fff;
+			&:focus, &:active {
+				outline: 0;
+			}
+		}
+	}
+	a {
+		color: #fff;
+	}
+
+	.nav li {
+		&.active {
+			outline: nonte;
+			background-color: rgba(255,255,255,.3);
+		}
+
+		a {
+			-webkit-transition: background .3s ease-in-out;
+			-moz-transition: background .3s ease-in-out;
+			transition: background .3s ease-in-out;
+			&:hover, &:focus, &.active {
+				outline: 0;
+				background-color: rgba(255,255,255,.3);
+			}
+		}
+	}
+}

@@ -1,0 +1,141 @@
+@mixin cover-background {
+	-webkit-background-size: cover;
+	-moz-background-size: cover;
+	background-size: cover;
+	-o-background-size: cover;
+	background-attachment: fixed;
+	background-color: #000;
+}
+
+@mixin shadow {
+	text-shadow:
+	-1px -1px 0 #666,
+	1px -1px 0 #666,
+	-1px 1px 0 #666,
+	1px 1px 0 #666;
+	-webkit-font-smoothing: antialiased;
+}
+
+.homepage {
+	height: 100%;
+
+	& > div{ height: 100%; }
+
+	section{
+		background: #f8f8f8;
+		color: #727272;
+		width: 100%;
+		height: 100%;
+		display: table;
+		& > div {
+			display: table-cell;
+			vertical-align: middle;
+		}
+	}
+
+	.content-section {
+		padding-top: 100px;
+	}
+
+	.intro {
+		display: table;
+		width: 100%;
+		height: auto;
+		padding: 100px 0;
+		text-align: center;
+		color: #fff;
+		background: url(../img/intro-bg.jpg) no-repeat center center scroll;
+		@include cover-background;
+		@media(min-width:767px) {
+			height: 100%;
+			padding: 0;
+		}
+
+
+		.intro-body {
+			display: table-cell;
+			vertical-align: middle;
+			.brand-heading {
+				font-size: 40px;
+				@media(min-width:767px) {
+					font-size: 80px;
+				}
+				@include shadow;
+			}
+
+			.intro-text {
+				font-size: 18px;
+				@media(min-width:767px) {
+					font-size: 25px;
+				}
+				color: white;
+				@include shadow;
+			}
+		}
+	}
+
+	#pricing {
+		width: 100%;
+		padding: 50px 0;
+		color: #fff;
+		background: url(../img/other-bg1.jpg) no-repeat center center scroll;
+		@include cover-background;
+	} 
+
+	#about{
+		background-color: #323B44;
+		color: #fff;
+	}
+
+	ul.banner-social-buttons {
+		margin-top: 0;
+		@media(max-width:1199px) {
+			margin-top: 15px;
+		}
+		li{
+			@media(max-width:767px) {
+				display: block;
+				margin-bottom: 20px;
+				padding: 0;	
+
+				&:last-child {
+					margin-bottom: 0;
+				}
+			}
+		}
+	}
+}
+
+@-webkit-keyframes pulse {
+	0 {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+
+	50% {
+		-webkit-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+
+	100% {
+		-webkit-transform: scale(1);
+		transform: scale(1);
+	}
+}
+
+@-moz-keyframes pulse {
+	0 {
+		-moz-transform: scale(1);
+		transform: scale(1);
+	}
+
+	50% {
+		-moz-transform: scale(1.2);
+		transform: scale(1.2);
+	}
+
+	100% {
+		-moz-transform: scale(1);
+		transform: scale(1);
+	}
+}
