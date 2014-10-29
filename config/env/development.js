@@ -4,7 +4,7 @@
  */
 
 module.exports = {
-  db: 'mongodb://localhost/simulation_development',
+  db: 'mongodb://localhost/punters_bot',
   facebook: {
     clientID: 'APP_ID',
     clientSecret: 'SECRET',
