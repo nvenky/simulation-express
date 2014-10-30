@@ -42,11 +42,11 @@
             </div>
           </div>
           <div class='panel panel-default' ng-repeat='scenario in simulationParams.scenarios'>
-            <div class='panel-heading'>
+            <div class='panel-heading scenario-heading' ng-class="{back: simulationParams.scenarios[$index].betType == 'BACK', lay: simulationParams.scenarios[$index].betType == 'LAY', lay_sp: simulationParams.scenarios[$index].betType == 'LAY (SP)' }">
               Scenario {{$index + 1}}
               <i class='glyphicon  pull-right glyphicon-remove-circle' ng-click="deleteScenario($index)" ng-show="simulationParams.scenarios.length > 1"></i>
             </div>
-            <div class='panel-body scenario-body' ng-class="{back: simulationParams.scenarios[$index].betType == 'BACK', lay: simulationParams.scenarios[$index].betType == 'LAY', lay_sp: simulationParams.scenarios[$index].betType == 'LAY (SP)' }">
+            <div class='panel-body scenario-body'>
               <div class="form-group">
                 <label for="range" class='col-md-2 control-label'>Position</label>
                 <div class='col-md-2'>
@@ -82,7 +82,7 @@
                   </div>
                 </div>
               </div>
-            </div>              
+            </div> 
           </div>
           <a class='btn btn-info pull-right' ng-click="addScenario()"><i class="glyphicon glyphicon-plus"></i> Scenario</a>
           <button type="submit" class='btn btn-success'><i class="glyphicon glyphicon-play"></i> Run</button>

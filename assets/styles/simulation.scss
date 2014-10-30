@@ -6,20 +6,22 @@
   background-color: #f8f8f8;
 }
 
-.scenario-body.back{
-  background-color: #c8e4f6;
-}
+.scenario-heading{
+   &.back{
+    background-color: #c8e4f6;
+   }
 
-.scenario-body.lay{
-  background-color: #fad5dd;
-}
+   &.lay{
+    background-color: #fad5dd;
+   }
 
-.scenario-body.lay_sp{
-  background-color: #fff;
+   &.lay_sp{
+    background-color: #fff;
+   }
 }
 
 #spinner {
-  display: block;     
+  display: block;
   z-index: 110;
   width: 100px;
   @media (max-width: 600px) {
