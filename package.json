@@ -1,6 +1,6 @@
 {
-  "name": "simulation-express-mongoose",
-  "description": "A boilerplate application for express mongoose",
+  "name": "simulation-express",
+  "description": "App for punters bot",
   "version": "1.0.0",
   "private": true,
   "author": {
@@ -13,7 +13,7 @@
   "scripts": {
     "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon server.js",
     "test": "make test",
-    "postinstall": "./node_modules/grunt-cli/bin/grunt production"
+    "postinstall": "NODE_ENV=development ./node_modules/.bin/grunt production"
   },
   "dependencies": {
     "async": "latest",
@@ -37,21 +37,9 @@
     "passport-local": "^1.0.0",
     "swig": "^1.4.2",
     "view-helpers": "^0.1.5",
-    "winston": "^0.8.0"
-  },
-  "devDependencies": {
-    "angular": "^1.3.0",
-    "angular-resource": "^1.3.0",
-    "angular-route": "^1.3.0",
-    "angular-ui-router": "^0.2.11",
-    "bootstrap-webpack": "0.0.3",
-    "chai": "*",
-    "coffee-loader": "~0",
-    "css-loader": "~0.6.3",
-    "exports-loader": "^0.6.2",
-    "file-loader": "^0.8.1",
-    "font-awesome": "^4.2.0",
+    "winston": "^0.8.0",
     "grunt": "~0.4.1",
+    "grunt-cli": "^0.1.13",
     "grunt-contrib-clean": "^0.6.0",
     "grunt-contrib-copy": "^0.7.0",
     "grunt-contrib-jshint": "~0.8.0",
@@ -59,20 +47,34 @@
     "grunt-conventional-changelog": "~1.1.0",
     "grunt-release": "~0.6.0",
     "grunt-webpack": "^1.0.8",
+    "angular": "^1.3.0",
+    "angular-resource": "^1.3.0",
+    "angular-route": "^1.3.0",
+    "angular-ui-router": "^0.2.11",
+    "bootstrap-webpack": "0.0.3",
+    "coffee-loader": "~0",
+    "css-loader": "~0.6.3",
+    "exports-loader": "^0.6.2",
+    "file-loader": "^0.8.1",
+    "font-awesome": "^4.2.0",
     "jquery": "^2.1.1",
     "load-grunt-tasks": "~0.3.0",
     "lodash": "^2.4.1",
-    "mocha": "latest",
     "ng-cache-loader": "0.0.4",
     "nodemon": "latest",
     "sass-loader": "^0.2.0",
-    "semver": "~2.3.0",
-    "should": "latest",
     "style-loader": "~0.6.0",
-    "supertest": "latest",
     "url-loader": "^0.5.5",
     "webpack": "~1"
   },
+  "devDependencies": {
+    "chai": "*",
+    "mocha": "latest",
+    "should": "latest",
+    "semver": "~2.3.0",
+    "supertest": "latest"
+  },
+  
   "repository": {
     "type": "git",
     "url": "git://github.com/nvenky/simulation-express.git"
