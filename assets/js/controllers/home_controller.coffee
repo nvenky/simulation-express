@@ -1,6 +1,7 @@
 module.exports = ['$scope', ($scope) ->
       require('./../../styles/homepage.scss')
       require('./../../styles/pricing.scss')
+      require('./../dependencies/jquery.easing.1.3.js')
       $('body').addClass('homepage')
 
       scrollHandler = ->
