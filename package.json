@@ -27,6 +27,7 @@
     "express": "^4.9.3",
     "express-session": "^1.8.2",
     "forever": "^0.11.1",
+    "highcharts-browserify": "^0.1.1-4.0.3",
     "method-override": "^2.2.0",
     "mongoose": "^3.9.2",
     "mongoose-user": "0.0.1",

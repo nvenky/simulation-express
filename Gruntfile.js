@@ -39,7 +39,7 @@ module.exports = function (grunt) {
         },
 		watch: {
 			app: {
-				files: ["assets/**/*"],
+				files: ["assets/**"],
 				tasks: ["webpack:build-dev"],
 				options: {
 					spawn: false,

@@ -92,7 +92,7 @@
       <div id='summary' ng-include src="'partials/summary.html'" ></div>
       <div id='chart'></div>
       <div id='race-details'></div>
-      <div id="loadingOverlay" class="loadingOverlay" style="display:none">
+      <div id="loadingOverlay" class="loadingOverlay" ng-show="loading">
         <img src="img/ajax_loader.gif" id="spinner" class='centered'/>
       </div>
     </div>
