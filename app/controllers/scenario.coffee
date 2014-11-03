@@ -2,19 +2,13 @@ mongoose = require('mongoose')
 Race = mongoose.model('Race')
 
 exports.simulate = (req, res) ->
-     @marketFilterQueryKey = (filter) ->
-       switch(filter)
-         when 'eventTypeId' then 'event.event_type_id'
-         else @camelCaseToUnderscore(filter)         
-     @camelCaseToUnderscore = (str) ->
-        str.replace(/([a-z\d])([A-Z])/g, '$1_$2').toLowerCase()
-
      @simulation = req.body
 
      @marketFilterQuery = {status: 'CLOSED'}
-     eventTypeId = @marketFilterQuery.eventTypeId
-     for key of Object.keys(@simulation.marketFilter)
-         @marketFilterQuery[@marketFilterQueryKey(key)] = @simulation.marketFilter[key] if @simulation.marketFilter[key]
+     @marketFilterQuery['event.event_type_id'] = @simulation.marketFilter['eventTypeId'] if @simulation.marketFilter['eventTypeId']
+     @marketFilterQuery['market_type'] = @simulation.marketFilter['marketType'] if @simulation.marketFilter['marketType']
+     @marketFilterQuery['exchange_id'] = @simulation.marketFilter['exchangeId'] if @simulation.marketFilter['exchangeId']
+     @marketFilterQuery['start_time'] = {$gte: new Date(@simulation.marketFilter['startDate'])} if @simulation.marketFilter['startDate']
 
      mapReducer = {}
      mapReducer.map = () ->

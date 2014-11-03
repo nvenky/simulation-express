@@ -9,12 +9,12 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
       $scope.betTypes= ['BACK', 'LAY', 'LAY (SP)']
       $scope.simulationParams = {
           commission: 6.5,
-          scenarios: [{stake: 5, range: 'Custom'}],
+          scenarios: [{stake: 5, range: 'Custom', betType: 'BACK'}],
           marketFilter: {marketType: 'WIN', exchangeId: 1}
       }
 
       $scope.addScenario = ->
-        $scope.simulationParams.scenarios.push({stake: 5, range: 'Custom'})
+        $scope.simulationParams.scenarios.push({stake: 5, range: 'Custom', betType: 'BACK'})
 
       $scope.deleteScenario = (index)->
         $scope.simulationParams.scenarios.splice(index, 1)
