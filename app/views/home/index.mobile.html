@@ -1,16 +1,19 @@
-{% extends '../layouts/mobile.html' %}
+<!doctype html>
+<html lang="en" ng-app="PuntersBotApp">
+<head>
+  <meta charset="utf-8">
+  <title>Punters Bot</title>
+  <!-- Viewport mobile tag for sensible mobile support -->
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <!--STYLES-->
+</head>
+<body id="page-top" data-spy="scroll" data-target=".navbar-fixed-top" ng-view>
+  <!--SCRIPTS-->
+  <script src="bundle.js"></script>
+  <!--SCRIPTS END-->
+</body>
+</html>
 
-{% block main %}
-  <h2>{{ title }}</h2>
-{% endblock %}
 
-{% block content %}
-  <p>This is a mobile layout! Customize it like you want!</p>
-  <ol>
-    <li>Awesome! Now add some routes, models, views and controllers.</li>
-    <li>
-      Change the content of
-      <code>app/views/home/index.mobile.html</code>
-    </li>
-  </ol>
-{% endblock %}
+
+
