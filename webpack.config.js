@@ -7,7 +7,8 @@ module.exports = {
 	},	
 	plugins:[new webpack.ProvidePlugin({
 		$: "jquery",
-		jQuery: "jquery"
+        jQuery: "jquery",
+       "windows.jQuery": "jquery"
 	})],
 	module: {
 		loaders: [

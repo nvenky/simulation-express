@@ -1,6 +1,8 @@
 module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
       require('./../../styles/simulation.scss')
-      HighCharts = require('highcharts-browserify')
+      HighCharts = require('./../dependencies/highcharts.4.0.4.js')
+      require('./../dependencies/highcharts-more.js')
+      require('./../dependencies/highcharts-exporting.js')
       $scope.exchanges = [{id: 1, name:'Australia'},{id: 2, name: 'International'}]
       $scope.eventTypes = [{id: 7, name: 'Horse Racing'},{id: 4339, name: 'Greyhound Racing'}]
 
@@ -50,7 +52,6 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
 
       @renderSummary = (processedData) ->
         $scope.summary = processedData
-
 
       @renderChart = (processedData) =>
          @chart = new Highcharts.Chart

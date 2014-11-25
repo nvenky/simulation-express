@@ -1,4 +1,4 @@
-$ = require('jquery')
+window.jQuery = require("jquery")
 require('bootstrap-webpack')
 require("./../../node_modules/font-awesome/css/font-awesome.css")
 require("./../../node_modules/font-awesome/fonts/fontawesome-webfont.eot")
