@@ -3,7 +3,6 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
       HighCharts = require('./../dependencies/highcharts.4.0.4.js')
       require('./../dependencies/highcharts-more.js')
       require('./../dependencies/highcharts-exporting.js')
-      hljs = require('highlight.js')
       $scope.exchanges = [{id: 1, name:'Australia'},{id: 2, name: 'International'}]
       $scope.eventTypes = [{id: 7, name: 'Horse Racing'},{id: 4339, name: 'Greyhound Racing'}]
 
@@ -50,9 +49,7 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
                       click: (e) ->
                         $http.get("/races/#{@x}")
                          .success (data, status) =>
-                           $scope.raceDetails = JSON.stringify(data)
-                           raceDetailBlock = $('#race-details > pre > code')[0]
-                           hljs.highlightBlock(raceDetailBlock)
+                           $scope.raceDetails = data
 
               series: [
                 name: 'Earnings'
