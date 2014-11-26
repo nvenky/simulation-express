@@ -1,9 +1,11 @@
 mongoose = require('mongoose')
 home = require('home')
 scenario = require('scenario')
+race = require('race')
 
 module.exports = (app, passport) ->
   app.get('/', home.index)
+  app.get('/races/:id(\\d+)', race.show)
 
   app.post('/scenario/simulate', scenario.simulate)
 
