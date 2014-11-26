@@ -21,34 +21,6 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
       $scope.deleteScenario = (index)->
         $scope.simulationParams.scenarios.splice(index, 1)
 
-      @processResults = (data) ->
-         raceResultsSeries = []
-         raceSummarySeries = []
-         summaryAmount = 0
-         lowestAmount = 0
-         highestAmount = 0
-         winningRaces = 0
-         series =  for result, i in data.response
-            amount = result.value.ret
-            raceResultsSeries.push(amount)
-            summaryAmount += amount
-            raceSummarySeries.push(summaryAmount)
-            winningRaces += 1 if amount > 0
-            lowestAmount = summaryAmount if summaryAmount < lowestAmount
-            highestAmount = summaryAmount if summaryAmount > highestAmount
-
-         summary =
-            lowestAmount: lowestAmount
-            highestAmount: highestAmount
-            profitLoss: raceSummarySeries[raceSummarySeries.length - 1]
-            winningRaces: winningRaces
-            winningPercentage: (winningRaces * 100) / data.stats.counts.output
-            counts: data.stats.counts
-            series:
-              raceResultsSeries: raceResultsSeries
-              raceSummarySeries: raceSummarySeries
-
-
 
       @renderSummary = (processedData) ->
         $scope.summary = processedData
@@ -96,10 +68,10 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
             $scope.loading = false
           .success (data, status) =>
             $scope.loading = false
-            if !data.response or data.response.length == 0
+            processedData = data.response
+            if !processedData or !processedData.series
               $('#chart').html 'No Data found'
               return
-            processedData = @processResults(data)
             @renderSummary(processedData)
             @renderChart(processedData)
   ]

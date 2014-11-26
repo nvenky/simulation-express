@@ -60,6 +60,36 @@ exports.simulate = (req, res) ->
        mapReducer.scope = @simulation
        mapReducer.verbose = true
 
+
+       processResults = (data, stats) ->
+         return {} if data.length == 0
+         raceResultsSeries = []
+         raceSummarySeries = []
+         summaryAmount = 0
+         lowestAmount = 0
+         highestAmount = 0
+         winningRaces = 0
+         debugger
+         series =  for result, i in data
+            amount = result.value.ret
+            raceResultsSeries.push(amount)
+            summaryAmount += amount
+            raceSummarySeries.push(summaryAmount)
+            winningRaces += 1 if amount > 0
+            lowestAmount = summaryAmount if summaryAmount < lowestAmount
+            highestAmount = summaryAmount if summaryAmount > highestAmount
+
+         summary =
+            lowestAmount: lowestAmount
+            highestAmount: highestAmount
+            profitLoss: raceSummarySeries[raceSummarySeries.length - 1]
+            winningRaces: winningRaces
+            winningPercentage: (winningRaces * 100) / stats.counts.output
+            counts: stats.counts
+            series:
+              raceResultsSeries: raceResultsSeries
+              raceSummarySeries: raceSummarySeries
+
+
        Race.mapReduce mapReducer, (err, collection, stats) ->
-           #console.log('map reduce took %d ms', stats.processtime)
-            res.json 'stats': stats, 'response': collection
+            res.json 'response': processResults(collection, stats)
