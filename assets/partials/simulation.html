@@ -91,8 +91,8 @@
       <br/>
       <div id='summary' ng-include src="'partials/summary.html'" ></div>
       <div id='chart'></div>
-      <div id='race-details'>
-          <pre><code class='json'></code></pre>
+      <div id='race-details' ng-hide="raceDetails == null">
+          <pre><code class='json'></code>{{raceDetails}}</pre>
       </div>
       <div id="loadingOverlay" class="loadingOverlay" ng-show="loading">
         <img src="img/ajax_loader.gif" id="spinner" class='centered'/>

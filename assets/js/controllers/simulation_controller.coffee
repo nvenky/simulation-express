@@ -50,9 +50,9 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
                       click: (e) ->
                         $http.get("/races/#{@x}")
                          .success (data, status) =>
-                           raceDetail = $('#race-details > pre > code')[0]
-                           raceDetail.textContent = JSON.stringify(data)
-                           hljs.highlightBlock(raceDetail)
+                           $scope.raceDetails = JSON.stringify(data)
+                           raceDetailBlock = $('#race-details > pre > code')[0]
+                           hljs.highlightBlock(raceDetailBlock)
 
               series: [
                 name: 'Earnings'
@@ -68,6 +68,7 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
       $scope.run = =>
         $scope.loading = true
         $scope.summary = null
+        $scope.raceDetails = null
         @chart.destroy() if @chart
         $http.post('/scenario/simulate', $scope.simulationParams)
           .error ->
