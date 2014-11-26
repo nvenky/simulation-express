@@ -78,6 +78,7 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
             processedData = data.response
             if !processedData or !processedData.series
               $('#chart').html 'No Data found'
+              @chart = null
               return
             @renderSummary(processedData)
             @renderChart(processedData)
