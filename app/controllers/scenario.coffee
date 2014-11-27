@@ -9,8 +9,13 @@ exports.simulate = (req, res) ->
      @marketFilterQuery['event.venue.name'] = @simulation.marketFilter['venue'] if @simulation.marketFilter['venue']
      @marketFilterQuery['market_type'] = @simulation.marketFilter['marketType'] if @simulation.marketFilter['marketType']
      @marketFilterQuery['exchange_id'] = @simulation.marketFilter['exchangeId'] if @simulation.marketFilter['exchangeId']
-     @marketFilterQuery['start_time'] = {$gte: new Date(@simulation.marketFilter['startDate'])} if @simulation.marketFilter['startDate']
-     @marketFilterQuery['start_time'] = {$lte: new Date(@simulation.marketFilter['endDate'])} if @simulation.marketFilter['endDate']
+     if @simulation.marketFilter['startDate'] or @simulation.marketFilter['endDate']
+         @marketFilterQuery['start_time'] = {}
+         @marketFilterQuery['start_time']["$gte"] = new Date(@simulation.marketFilter['startDate']) if @simulation.marketFilter['startDate']
+         if @simulation.marketFilter['endDate']
+             endDate = new Date(@simulation.marketFilter['endDate'])
+             endDate.setDate(endDate.getDate() + 1)
+             @marketFilterQuery['start_time']["$lt"] = endDate
 
      mapReducer = {}
      mapReducer.map = () ->
@@ -30,7 +35,7 @@ exports.simulate = (req, res) ->
                 else scenario.positions
 
             profitLoss: (scenario, market, market_runner) ->
-               if market_runner and !isNaN(market_runner.actual_sp)
+               if market_runner and !isNaN(parseFloat(market_runner.actual_sp)) and isFinite(market_runner.actual_sp)
                  price = parseFloat(market_runner.actual_sp)
                  return 0 if (scenario.minOdds and scenario.minOdds > price) or (scenario.maxOdds and scenario.maxOdds < price)
 
