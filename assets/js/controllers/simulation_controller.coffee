@@ -84,7 +84,7 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
                     events:
                       click: (e) ->
                         $scope.loading = true
-                        $http.get("/races/#{@x}")
+                        $http.get("/races/#{@options.id}")
                          .error ->
                             $scope.loading = false
                          .success (data, status) =>
