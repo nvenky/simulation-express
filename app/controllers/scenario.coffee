@@ -6,9 +6,11 @@ exports.simulate = (req, res) ->
 
      @marketFilterQuery = {status: 'CLOSED'}
      @marketFilterQuery['event.event_type_id'] = @simulation.marketFilter['eventTypeId'] if @simulation.marketFilter['eventTypeId']
+     @marketFilterQuery['event.venue.name'] = @simulation.marketFilter['venue'] if @simulation.marketFilter['venue']
      @marketFilterQuery['market_type'] = @simulation.marketFilter['marketType'] if @simulation.marketFilter['marketType']
      @marketFilterQuery['exchange_id'] = @simulation.marketFilter['exchangeId'] if @simulation.marketFilter['exchangeId']
      @marketFilterQuery['start_time'] = {$gte: new Date(@simulation.marketFilter['startDate'])} if @simulation.marketFilter['startDate']
+     @marketFilterQuery['start_time'] = {$lte: new Date(@simulation.marketFilter['endDate'])} if @simulation.marketFilter['endDate']
 
      mapReducer = {}
      mapReducer.map = () ->
@@ -31,28 +33,27 @@ exports.simulate = (req, res) ->
                if market_runner and !isNaN(market_runner.actual_sp)
                  price = parseFloat(market_runner.actual_sp)
                  return 0 if (scenario.minOdds and scenario.minOdds > price) or (scenario.maxOdds and scenario.maxOdds < price)
+
                  if scenario.betType== 'BACK'
                    amt = if market_runner.status == 'WINNER' then (price * scenario.stake) - scenario.stake else -scenario.stake
                  else if  scenario.betType == 'LAY'
                    amt = if market_runner.status == 'WINNER' then -((price * scenario.stake) - scenario.stake) else scenario.stake
                  else #LAY (SP)
                    amt = if market_runner.status == 'WINNER' then -scenario.stake else (scenario.stake / price)
+
                  if amt > 0
-                   emit(market._id, {ret: amt * ((100 - commission)/100), startTime: market.start_time})
+                   emit(market.market_id, {ret: amt * ((100 - commission)/100), marketId: market.market_id})
                  else if amt < 0
-                   emit(market._id, {ret: amt, startTime: market.start_time})
+                   emit(market.market_id, {ret: amt, marketId: market.market_id})
                  amt
          new Mapper().map(this)
 
        mapReducer.reduce = (key, values) ->
-          reducedVal = {ret:  0, startTime: undefined}
+          reducedVal = {ret:  0, marketId: key}
           vals = []
           for val in values
              vals.push val.ret
              reducedVal.ret += Math.round(val.ret * 100) / 100
-          #print("Key " + key + "  Actual value " + vals)
-          #print("Reduced value " + reducedVal.ret)
-          reducedVal.startTime = values[0].startTime
           reducedVal
 
        mapReducer.out = {inline: 1} #'something'
@@ -72,9 +73,13 @@ exports.simulate = (req, res) ->
          debugger
          series =  for result, i in data
             amount = result.value.ret
+            marketId = result.value.marketId
             raceResultsSeries.push(amount)
+            #raceResultsSeries.push(x: i, y: amount)
             summaryAmount += amount
+            #raceSummarySeries.push(x: i, y: summaryAmount)
             raceSummarySeries.push(summaryAmount)
+            # {marketId: marketId, x: i, y: summaryAmount})
             winningRaces += 1 if amount > 0
             lowestAmount = summaryAmount if summaryAmount < lowestAmount
             highestAmount = summaryAmount if summaryAmount > highestAmount
@@ -82,7 +87,7 @@ exports.simulate = (req, res) ->
          summary =
             lowestAmount: lowestAmount
             highestAmount: highestAmount
-            profitLoss: raceSummarySeries[raceSummarySeries.length - 1]
+            profitLoss: summaryAmount
             winningRaces: winningRaces
             winningPercentage: (winningRaces * 100) / stats.counts.output
             counts: stats.counts

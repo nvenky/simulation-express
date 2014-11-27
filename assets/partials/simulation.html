@@ -37,8 +37,21 @@
             </div>
             <div class='col-md-2'>
               <div class="input-group input-append date" date-time-append>
-                <input type="datetime" date-time ng-model='simulationParams.marketFilter.startDate' view='date' min-view='date' format='dd-MM-yyyy' class="form-control" placeholder="Start Date"><span class="input-group-addon add-on"><i class="glyphicon glyphicon-th"></i></span>
+                <input type="datetime" date-time ng-model='simulationParams.marketFilter.startDate' view='date' min-view='date' format='dd-MM-yyyy' class="form-control" placeholder="Start date"><span class="input-group-addon add-on"><i class="glyphicon glyphicon-th"></i></span>
               </div>
+            </div>
+            <div class='col-md-2'>
+              <div class="input-group input-append date" date-time-append>
+                <input type="datetime" date-time ng-model='simulationParams.marketFilter.endDate' view='date' min-view='date' format='dd-MM-yyyy' class="form-control" placeholder="End date"><span class="input-group-addon add-on"><i class="glyphicon glyphicon-th"></i></span>
+              </div>
+            </div>
+          </div>
+          <div class="form-group">
+            <label for="venue" class='col-md-2 control-label'>Venue</label>
+            <div class='col-md-2'>
+              <select ng-model="simulationParams.marketFilter.venue" ng-options="venue for venue in venues"  class='form-control'>
+                <option value=''>Venue<option>
+              </select>
             </div>
           </div>
           <div class='panel panel-default' ng-repeat='scenario in simulationParams.scenarios'>
@@ -91,8 +104,8 @@
       <br/>
       <div id='summary' ng-include src="'partials/summary.html'" ></div>
       <div id='chart'></div>
-      <div id='race-details' ng-include src="'partials/marketDetails.html'" ng-hide="raceDetails == null">
-      </div>
+      <div id='race-details' ng-include src="'partials/marketDetails.html'" ng-hide="raceDetails == null"></div>
+      <div id="loadingOverlay" class="loadingOverlay" ng-show="loading"><img src="img/ajax_loader.gif" id="spinner" class='centered'/></div>
     </div>
   </div>
 </div>
