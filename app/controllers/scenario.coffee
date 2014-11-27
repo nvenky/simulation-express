@@ -74,11 +74,11 @@ exports.simulate = (req, res) ->
          series =  for result, i in data
             amount = result.value.ret
             marketId = result.value.marketId
-            raceResultsSeries.push(amount)
-            #raceResultsSeries.push(x: i, y: amount)
+            #raceResultsSeries.push(amount)
+            raceResultsSeries.push(x: i, y: amount)
             summaryAmount += amount
-            #raceSummarySeries.push(x: i, y: summaryAmount)
-            raceSummarySeries.push(summaryAmount)
+            #raceSummarySeries.push(summaryAmount)
+            raceSummarySeries.push(x: i, y: summaryAmount)
             # {marketId: marketId, x: i, y: summaryAmount})
             winningRaces += 1 if amount > 0
             lowestAmount = summaryAmount if summaryAmount < lowestAmount
