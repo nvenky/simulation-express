@@ -1,5 +1,3 @@
-angular = require('angular')
-require("angular-route")
 require('./controllers.coffee')
 require('./../styles/app.scss')
 require('./../styles/overrides.scss')
