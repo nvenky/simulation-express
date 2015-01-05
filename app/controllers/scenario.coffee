@@ -29,9 +29,9 @@ exports.simulate = (req, res) ->
               switch(scenario.range)
                 when 'ALL' then [1..size]
                 when 'TOP 1/2' then [1..(Math.round(size * 0.5))]
-                when 'BOTTOM 1/2' then [Math.round(size * 0.5)..size]
+                when 'BOTTOM 1/2' then [(Math.round(size * 0.5) + 1)..size]
                 when 'TOP 1/3' then [1..(Math.round(size * 0.33))]
-                when 'BOTTOM 1/3' then [Math.round(size * 0.66)..size]
+                when 'BOTTOM 1/3' then [(Math.round(size * 0.66) + 1)..size]
                 else scenario.positions
 
             profitLoss: (scenario, market, market_runner) ->
@@ -75,17 +75,22 @@ exports.simulate = (req, res) ->
          lowestAmount = 0
          highestAmount = 0
          winningRaces = 0
+         maxLosingStreak = 0
+         currentLosingStreak = 0
          debugger
          series =  for result, i in data
             amount = result.value.ret
             marketId = result.value.marketId
-            #raceResultsSeries.push(amount)
             raceResultsSeries.push(x: i, y: amount, id: marketId)
-            summaryAmount += amount
-            #raceSummarySeries.push(summaryAmount)
             raceSummarySeries.push(x: i, y: summaryAmount, id: marketId)
-            # {marketId: marketId, x: i, y: summaryAmount})
-            winningRaces += 1 if amount > 0
+            summaryAmount += amount
+            if amount > 0
+              winningRaces += 1
+              maxLosingStreak = currentLosingStreak if maxLosingStreak < currentLosingStreak
+              currentLosingStreak = 0
+            else
+              currentLosingStreak += 1
+
             lowestAmount = summaryAmount if summaryAmount < lowestAmount
             highestAmount = summaryAmount if summaryAmount > highestAmount
 
@@ -94,6 +99,7 @@ exports.simulate = (req, res) ->
             highestAmount: highestAmount
             profitLoss: summaryAmount
             winningRaces: winningRaces
+            maxLosingStreak: maxLosingStreak
             winningPercentage: (winningRaces * 100) / stats.counts.output
             counts: stats.counts
             series:

@@ -80,6 +80,8 @@ module.exports = ['$scope', '$http', '$log', ($scope, $http, $log) ->
                   negativeColor: '#FF0000'
                   marker:
                      lineWidth: 1
+                  turboThreshold: 100000
+                  stickyTracking: false
                   point:
                     events:
                       click: (e) ->
