@@ -9,8 +9,8 @@ var fs = require('fs');
 var express = require('express');
 var mongoose = require('mongoose');
 var passport = require('passport');
-//var config = require('./config/config');
-var config = require('config');
+var config = require('./config/config');
+//var config = require('config');
 
 
 var app = express();

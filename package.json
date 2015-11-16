@@ -8,7 +8,7 @@
     "email": "something@abc.com"
   },
   "engines": {
-    "node": "0.10.x"
+    "node": "0.12.x"
   },
   "scripts": {
     "start": "NODE_PATH=./config:./app/controllers NODE_ENV=development ./node_modules/.bin/nodemon server.js",
@@ -20,7 +20,6 @@
     "angular-resource": "^1.3.0",
     "angular-route": "^1.3.0",
     "angular-ui-router": "^0.2.11",
-    "async": "latest",
     "body-parser": "^1.8.2",
     "bootstrap-webpack": "0.0.3",
     "coffee-loader": "~0",

@@ -13,7 +13,7 @@ mongoStore = require('connect-mongo')(session)
 flash = require('connect-flash')
 winston = require('winston')
 helpers = require('view-helpers')
-config = require('config')
+config = require('./config')
 pkg = require('../package.json')
 
 env = process.env.NODE_ENV || 'development'

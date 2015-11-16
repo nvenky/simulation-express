@@ -1,7 +1,7 @@
 mongoose = require('mongoose')
-home = require('home')
-scenario = require('scenario')
-race = require('race')
+home = require('./../app/controllers/home')
+scenario = require('./../app/controllers/scenario')
+race = require('./../app/controllers/race')
 
 module.exports = (app, passport) ->
   app.get('/', home.index)
